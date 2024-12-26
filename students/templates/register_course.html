@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Course</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Light gray background */
+            color: #333; /* Dark text color */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full viewport height */
+        }
+
+        h1 {
+            color: #007bff; /* Primary color for the heading */
+            margin-bottom: 20px; /* Spacing below the heading */
+        }
+
+        form {
+            background-color: white; /* White background for the form */
+            padding: 20px;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            width: 100%;
+            max-width: 400px; /* Max width for the form */
+        }
+
+        fieldset {
+            border: 1px solid #ddd; /* Light border around the fieldset */
+            padding: 10px; /* Padding inside the fieldset */
+        }
+
+        legend {
+            font-weight: bold; /* Bold text for the legend */
+        }
+
+        label {
+            display: block; /* Block display for labels */
+            margin: 10px 0; /* Spacing between labels */
+        }
+
+        button {
+            background-color: #007bff; /* Button background color */
+            color: white; /* White text color */
+            padding: 10px 15px; /* Padding inside the button */
+            border: none; /* No border for the button */
+            border-radius: 5px; /* Rounded corners for the button */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker button color on hover */
+        }
+
+        a {
+            margin-top: 20px; /* Spacing above the link */
+            text-decoration: none; /* Remove underline from link */
+            color: #007bff; /* Link color */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Register Courses <!--for {{ student.name }}--></h1>
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Select Courses:</legend>
+            {% for course in courses %}
+                <label>
+                    <input type="checkbox" name="course_ids" value="{{ course.id }}">
+                    {{ course.name }} - {{ course.description }}
+                </label>
+            {% endfor %}
+        </fieldset>
+        <button type="submit">Register</button>
+    </form>
+    <a href="{% url 'student_list' %}">View List Of Students</a>
+</body>
+</html>

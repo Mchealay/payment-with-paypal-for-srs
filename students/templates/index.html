@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 15px;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    
+    {% if student.is_authenticated %}
+        <p>{{ student.name }}</p>
+        <div class="links">
+            <a href="{% url 'register_course' student.id %}">Register Course</a> 
+            <a href="{% url 'make_payment' student.id %}">Make Payment</a>
+        </div>
+    {% endif %}
+    
+    <div class="links">
+        <a href="{% url 'student_list' %}">View List Of Students</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<h2>Payment for {{ student.name }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="amount" placeholder="Amount" required>
+    <button type="submit">Pay Now</button>
+</form>

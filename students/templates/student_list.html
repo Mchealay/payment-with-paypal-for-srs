@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin-left: 4%;
+        }
+        p{
+            margin-left: 3%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <h1>List Of Students</h1>
+   <p> {% for student in students %}
+    {{ student.name}} <br>
+          
+{% endfor %}</p>
+
+</body>
+</html>
