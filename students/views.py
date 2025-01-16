@@ -18,7 +18,7 @@ def login_view(request):
             # Fetch the student by email and check the name
             student = Student.objects.get(email=email)
             if student.name == name and student.check_password(password):  # Check name and password
-                request.session['student_id'] = student.id  # Store student ID in session
+                request.session['student_name'] = student.name  # Store student ID in session
                 messages.success(request, 'Logged in successfully.')  # Success message
                 return redirect('index')  # Redirect to the student list page
             else:
@@ -60,9 +60,10 @@ def register_course(request, student_id):
     return render(request, 'register_course.html', {'student': student, 'courses': courses})
 
 def success_view(request):
-    return render(request, 'success.html')  # Render the success template
+    return render(request, 'success.html')  
 
-@login_required  # Ensure only authenticated users can access this view
+@login_required  
 def index(request):
-    student = request.user  # Assuming the logged-in user is a Student
-    return render(request, 'index.html', {'student': student})  # Pass the student to the template
+    student = request.user 
+    print (student)
+    return render(request, 'index.html', {'student': student})  

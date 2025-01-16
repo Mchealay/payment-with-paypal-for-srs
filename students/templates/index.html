@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Success</title>
+    <title>Welcome</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@
             padding: 20px;
         }
 
-        h1 {
+        .welcome-message {
             color: #333;
             text-align: center;
         }
@@ -44,16 +44,21 @@
     </style>
 </head>
 <body>
-    <h1>Welcome!</h1>
-    
-    {% if student.is_authenticated %}
-        <p>{{ student.name }}</p>
-        <div class="links">
-            <a href="{% url 'register_course' student.id %}">Register Course</a> 
-            <a href="{% url 'make_payment' student.id %}">Make Payment</a>
-        </div>
-    {% endif %}
-    
+    <div class="welcome-message">
+        {% if student %}
+            <p>Welcome, {{ student}}!</p>  <!-- Display the student's name -->
+            <div class="links">
+                <a href="{% url 'register_course' student.id %}">Register Course</a> 
+                <a href="{% url 'make_payment' student.id %}">Make Payment</a>
+            </div>
+        {% else %}
+            <p>Welcome, Guest!</p>
+        {% endif %}
+    </div>
+    <p> {% for student in students %}
+        {{ student.name}} 
+        -<a href="{% url 'make_payment' student.id %}">Make Payment</a><br>
+    {% endfor %}</p>
     <div class="links">
         <a href="{% url 'student_list' %}">View List Of Students</a>
     </div>

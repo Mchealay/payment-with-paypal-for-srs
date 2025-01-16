@@ -1,4 +1,5 @@
-<h2>Payment for {{ student.name }}</h2>
+<h2>Payment For Registration <br> I am  {{  request.user.username }}</h2>
+
 <form method="post">
     {% csrf_token %}
     <input type="text" name="amount" placeholder="Amount" required>
