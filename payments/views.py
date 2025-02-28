@@ -2,13 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Payment
 from students.models import Student
 import paypalrestsdk
+#email of seller=   sb-vzrnx35521597@business.example.com     password="12345678"
+#email of buyer=    sb-gn67u35482760@personal.example.com     password="12345678"
 paypalrestsdk.configure({
     "mode": "sandbox", 
     "client_id": "Af6uWJiXWpLIBLriA-WLaprr_YOdlmeZQ8ZmIvilfXnEqCRwcAqQnDynqqS9oLlid2OTRVbs9CtZGfnl",
     "client_secret": "EOHCtmRSxCQrpSx90SyI3tCshxlOQLb4-8VhXwURwWv1Krc695-LWc-kvzVHPJ5UEHoKyaUheufgSGbm"
 })
-#sb-vzrnx35521597@business.example.com seller 12345678
-#sb-gn67u35482760@personal.example.com buyer 12345678 
+
 def make_payment(request, student_id):
     student = get_object_or_404(Student, id=student_id)
     if request.method == 'POST':
