@@ -62,7 +62,7 @@ def register_course(request, student_id):
 def success_view(request):
     return render(request, 'success.html')  
 
-@login_required  
+
 def index(request):
     student = request.user 
     print (student)
